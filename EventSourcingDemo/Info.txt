@@ -1,0 +1,18 @@
+﻿
+Diese Solution demonstriert Event Sourcing und BDD-style Testen mit Events.
+
+
+Die Tests sind sicherlich unrealistisch expressiv für eine einfache mathematische Berechnung. 
+Hier gehts um die Demonstration, stellen Sie sich komplexeres Verhalten vor ;)
+
+
+Explizit weggelassen wurden folgende Aspekte:
+
+ - CQRS Pattern, insbesondere das parameter-list-to-object Refactoring, commands und command handler
+ - DDD Aspekte, insbesondere die Kapselung von Value Objects (Währung statt Decimal, Handles statt Guid)
+ - Fehlerbehandlung ohne Exceptions, insb. die Veröffentlichung von Domänenfehlern als Events
+
+
+Externe Abhängigkeiten:
+
+   keine (statt nUnit & co gibt es hier eine einfache explizite Registrierung der Tests in Main() nebst Konsolenausgabe.)

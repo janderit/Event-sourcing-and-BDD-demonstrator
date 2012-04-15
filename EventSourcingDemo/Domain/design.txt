@@ -1,0 +1,11 @@
+﻿
+Naive Beispielimplementierung eines Anlageverzeichnisses
+
+Singleton Aggregate Root AnlagevermoegenVerzeichnis erfasst alle Investitionen (Entity) und delegiert die Abschreibung an diese.
+
+Der Zustand der jeweiligen Entitäten in einer eigenen privaten Klasse gekapselt, 
+die die Zustandsänderungen als Reaktion auf Events implementiert.
+
+Die eigentliche Geschäftslogik ist in der äußeren Entität, die ihren eigenen Zustand nur mittelbar über das Publishen eines Events ändern kann.
+
+Diese Trennung ist nicht zwingend erforderlich, verhindert aber sehr effektiv Bugs, die aus der Verletzung dieses Check/Apply Patterns resultieren würden.

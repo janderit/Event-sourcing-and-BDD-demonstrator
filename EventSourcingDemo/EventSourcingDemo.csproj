@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6DD3026A-27F8-4E6A-B76E-49061F333D16}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EventSourcingDemo</RootNamespace>
+    <AssemblyName>EventSourcingDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Base\Event.cs" />
+    <Compile Include="Base\EventSourcedAggregate.cs" />
+    <Compile Include="Domain\AbsetzungFuerAbnutzungBerechnungsDienst.cs" />
+    <Compile Include="Domain\AnlagevermoegenVerzeichnis.cs" />
+    <Compile Include="Domain\AnlagevermoegenVerzeichnisState.cs" />
+    <Compile Include="Domain\Investition.cs" />
+    <Compile Include="Domain\InvestitionState.cs" />
+    <Compile Include="Events\AnlagevermoegenWurdeAbgeschrieben.cs" />
+    <Compile Include="Events\AnlagevermoegenWurdeVollstaendigAbgeschrieben.cs" />
+    <Compile Include="Events\InvestitionInAnlagevermoegenGetaetigt.cs" />
+    <Compile Include="Fehler\AbschreibungVorInvestition.cs" />
+    <Compile Include="Fehler\AnlagevermoegenNichtGefunden.cs" />
+    <Compile Include="Fehler\InvestitionBereitsVollstaendigAbgeschrieben.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestFramework\ErwartetesEventWrapper.cs" />
+    <Compile Include="TestFramework\HistorischesEventProperty.cs" />
+    <Compile Include="TestFramework\HistorischesEventWrapper.cs" />
+    <Compile Include="TestFramework\PropertyConditionExpectation.cs" />
+    <Compile Include="TestFramework\PropertyExpectation.cs" />
+    <Compile Include="TestFramework\PropertyExpectationBase.cs" />
+    <Compile Include="TestFramework\TestBase.cs" />
+    <Compile Include="Test\Doppelte_Invesition_ist_unzulaessig.cs" />
+    <Compile Include="Test\Doppelte_Abschreibung_in_einem_Jahr_ist_unzulaessig.cs" />
+    <Compile Include="Test\Keine_Abschreibung_fuer_unbekannte_Vermoegensgegenstaende.cs" />
+    <Compile Include="Test\Keine_Abschreibung_nach_Sonderabschreibung.cs" />
+    <Compile Include="Test\Keine_Sonderabschreibung_nach_vollstaendiger_Abschreibung.cs" />
+    <Compile Include="Test\Keine_Abschreibung_vor_der_Anschaffung.cs" />
+    <Compile Include="Test\Lineare_Abschreibung_waehrend_der_Nutzungsdauer.cs" />
+    <Compile Include="Test\Monatsanteilige_Abschreibung_im_Anschaffungsjahr.cs" />
+    <Compile Include="Test\Monatsanteilige_Abschreibung_im_Anschaffungsjahr_Grenzfall_Dezember.cs" />
+    <Compile Include="Test\Monatsanteilige_Abschreibung_im_Anschaffungsjahr_Grenzfall_Januar.cs" />
+    <Compile Include="Test\Restwert_Abschreibung_im_letzten_Jahr.cs" />
+    <Compile Include="Test\Restwert_unter_zehn_Euro_wird_sofort_abgeschrieben.cs" />
+    <Compile Include="Test\Sonderabschreibung_fuehrt_zu_vollstaendiger_Abschreibung.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Domain\design.txt" />
+    <Content Include="Info.txt" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
